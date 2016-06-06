@@ -4,10 +4,13 @@
 <div id="books">
 	<% if books.any? %>
 		<% books.each do |book| %>
-			<div class="book">
+			<div class="book" data-book="<%= book.id %>">
 				<h2><%= book.title %></h2>
 				<p><%= book.author %></p>
+				<p><%= book.id %></p>
+				<button class="bookshelf-delete-btn" data-url="<%= book.id %>">Delete</button>
 			</div>
+			<hr>
 		<% end %>
 	<% else %>
 		<p class="placeholder">There are no books yet.</p>

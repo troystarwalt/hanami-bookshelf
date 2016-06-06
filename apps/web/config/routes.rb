@@ -1,7 +1,6 @@
-post '/books', to: 'books#create'
-get '/books/new', to: 'books#new'
-get '/books', to: 'books#index'
 # Configure your routes here
 # See: http://www.rubydoc.info/gems/hanami-router/#Usage
 
-get '/', to: 'home#index'
+
+resources :books
+get '/', to: 'home#index', as: :home

@@ -1,20 +1,23 @@
 module Web::Controllers::Books
-  class Create
-    include Web::Action
+	class Create
+		include Web::Action
 
-    expose :book
+		expose :book
 
-    params do 
-    	param :book do
-    		param :title, presence: true
-    		params :author, presence: true
-    	end
-    end
+		params do 
+			param :book do
+				param :title, presence: true
+				param :author, presence: true
+			end
+		end
 
-    def call(params)
-      @book = BookRepository.create(Book.new(params[:book]))
+		def call(params)
 
-      redirect_to '/books'
-    end
-  end
+			if params.valid?
+				@book = BookRepository.create(Book.new(params[:book]))
+
+				redirect_to routes.books_path
+			end
+		end
+	end
 end

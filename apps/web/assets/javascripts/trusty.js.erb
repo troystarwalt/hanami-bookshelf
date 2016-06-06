@@ -1,0 +1,21 @@
+// This will be where I delete shit.
+
+$(document).on('ready', function() {
+	$deleteButton = $('.bookshelf-delete-btn');
+	console.log('Test');
+	$deleteButton.on('click', function() {
+		console.log("clicked");
+		_this = this;
+		$book = _this.el;
+		bookId = $('.bookshelf-delete-btn').data('url');
+		console.log(bookId);
+		$.ajax({
+			method: "DELETE",
+			url: "localhost:2300/books/" + bookId,
+
+			success: function() {
+				$book.fadeOut('300');
+			}
+		});
+	});
+});
